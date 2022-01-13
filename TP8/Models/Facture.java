@@ -1,4 +1,4 @@
-package com.ZakariaElouahdi.TP8.Models;
+package com.TP8.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
