@@ -1,7 +1,7 @@
-package com.ZakariaElouahdi.TP8.Controller;
+package com.TP8.Controller;
 
-import com.ZakariaElouahdi.TP8.Models.Facture;
-import com.ZakariaElouahdi.TP8.Repository.FactureRepository;
+import com.TP8.Models.Facture;
+import com.TP8.Repository.FactureRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
