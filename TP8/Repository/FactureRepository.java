@@ -1,4 +1,4 @@
-package com.ZakariaElouahdi.TP8.Repository;
+package com.TP8.Repository;
 
 import com.ZakariaElouahdi.TP8.Models.Facture;
 import org.springframework.data.jpa.repository.JpaRepository;
