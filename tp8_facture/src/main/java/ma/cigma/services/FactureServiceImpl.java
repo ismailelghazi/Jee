@@ -34,10 +34,7 @@ public class FactureServiceImpl implements IFactureService{
 		return dao.deleteById(id);
 	}
 
-	@Override
-	public Facture getById(long id) {
-		return dao.findById(id);
-	}
+	
 
 
 
