@@ -34,9 +34,7 @@ public class FactureController {
     	return service.deleteById(id);
     }
 
-    public Facture getById(long id){
-    	return service.getById(id);
-    }
+    
     
     
 
