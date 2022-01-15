@@ -19,13 +19,10 @@ public class FactureServiceImpl implements IFactureService{
 
     @Override
     public boolean save(Facture c) {
-        System.out.println("Service Layer Level ...");
         return dao.save(c);
     }
 
-    public FactureServiceImpl() {
-        System.out.println("Creation d'un objet FactureServiceImpl");
-    }
+    
 
 	@Override
 	public Facture modify(Facture c) {
