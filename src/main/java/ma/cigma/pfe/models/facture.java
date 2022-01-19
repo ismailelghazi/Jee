@@ -1,9 +1,7 @@
 package ma.cigma.pfe.models;
 import lombok.ToString;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 @ToString
 public class facture {
@@ -12,13 +10,24 @@ public class facture {
     private long id;
     private double amount;
     private String description;
-
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
     public facture() {
     }
-
-    public facture(double amount, String description) {
+    public facture(double amount, String description,Client client) {
         this.amount = amount;
         this.description = description;
+        this.client =client;
+    }
+
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public double getAmount() {

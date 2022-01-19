@@ -17,9 +17,28 @@ public class Client {
     public void setFactures(List<facture> factures) {
         this.factures = factures;
     }
-
-    @OneToMany(cascade = {CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     private List<facture> factures;
+
+    public List<Promotion> getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(List<Promotion> promotions) {
+        this.promotions = promotions;
+    }
+
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name="my_join_table_client_promotion",joinColumns = @JoinColumn(
+            name = "client_fk",
+            referencedColumnName = "id"
+    ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "promotion_fk",
+                    referencedColumnName = "id"
+            ))
+    private List<Promotion> promotions;
+
     public Client(String name) {
         this.name = name;
     }

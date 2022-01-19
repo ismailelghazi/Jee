@@ -1,6 +1,7 @@
 package ma.cigma.pfe;
 
 import ma.cigma.pfe.models.Client;
+import ma.cigma.pfe.models.Promotion;
 import ma.cigma.pfe.models.facture;
 import ma.cigma.pfe.presentation.ClientController;
 import org.springframework.context.ApplicationContext;
@@ -25,11 +26,13 @@ public class ApplicationRunner {
 //        ctrl.modify(new Client(1,"IBTIHAL"));
 //        ctrl.removeById(2);
 //        Client found = ctrl.getById(1);
-        Client client = new Client("OMAR");
-        List<facture> factures = Arrays.asList(
-                new facture(120.00,"ismail"),
-                new facture(12.00,"ismail"));
-        client.setFactures(factures);
+        Client client = new Client("ismail");
+        /*List<facture> factures = Arrays.asList(
+                new facture(120.00,"ismail",client),
+                new facture(12.00,"ismail",client));
+        client.setFactures(factures);*/
+        List<Promotion> promotions=Arrays.asList(new Promotion("remise 10%"),new Promotion("solde 40%"));
+        client.setPromotions(promotions);
         ctrl.save(client);
     }
 }
