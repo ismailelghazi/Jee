@@ -20,6 +20,16 @@ public class Client {
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     private List<facture> factures;
 
+    public void setCarteFidelio(CarteFidelio carteFidelio) {
+        this.carteFidelio = carteFidelio;
+    }
+
+    public CarteFidelio getCarteFidelio() {
+        return carteFidelio;
+    }
+
+    @OneToOne(cascade = {CascadeType.PERSIST},mappedBy = "client")
+    private CarteFidelio carteFidelio;
     public List<Promotion> getPromotions() {
         return promotions;
     }
@@ -70,7 +80,8 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+                ", name='" + name + '\'' + factures+'\''+promotions+ '}';
     }
+
+
 }

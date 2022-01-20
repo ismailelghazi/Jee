@@ -1,5 +1,6 @@
 package ma.cigma.pfe;
 
+import ma.cigma.pfe.models.CarteFidelio;
 import ma.cigma.pfe.models.Client;
 import ma.cigma.pfe.models.Promotion;
 import ma.cigma.pfe.models.facture;
@@ -31,8 +32,11 @@ public class ApplicationRunner {
                 new facture(120.00,"ismail",client),
                 new facture(12.00,"ismail",client));
         client.setFactures(factures);*/
-        List<Promotion> promotions=Arrays.asList(new Promotion("remise 10%"),new Promotion("solde 40%"));
-        client.setPromotions(promotions);
+        /*List<Promotion> promotions=Arrays.asList(new Promotion("remise 10%"),new Promotion("solde 40%"));
+        client.setPromotions(promotions);*/
+        CarteFidelio carteFidelio = new CarteFidelio("zerz");
+        carteFidelio.setClient(client);
+        client.setCarteFidelio(carteFidelio);
         ctrl.save(client);
     }
 }
