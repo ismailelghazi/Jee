@@ -9,14 +9,23 @@ public class CarteFidelio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-    public CarteFidelio(String code) {
+
+    public CarteFidelio(Client client, String code) {
+        this.client = client;
         this.code = code;
     }
 
+    @OneToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    public CarteFidelio() {
+    }
+
+
+
     private String code;
+
 
 
 
