@@ -9,21 +9,26 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
+    private List<Adresse> adresses;
+    public List<Adresse> getAdresses() {
+        return adresses;
+    }
 
+    public void setAdresses(List<Adresse> adresses) {
+        this.adresses = adresses;
+    }
     public List<facture> getFactures() {
         return factures;
     }
-
     public void setFactures(List<facture> factures) {
         this.factures = factures;
     }
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     private List<facture> factures;
-
     public void setCarteFidelio(CarteFidelio carteFidelio) {
         this.carteFidelio = carteFidelio;
     }
-
     public CarteFidelio getCarteFidelio() {
         return carteFidelio;
     }
@@ -42,10 +47,8 @@ public class Client {
     @JoinTable(name="my_join_table_client_promotion",joinColumns = @JoinColumn(
             name = "client_fk",
             referencedColumnName = "id"
-    ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "promotion_fk",
-                    referencedColumnName = "id"
+    ), inverseJoinColumns = @JoinColumn(
+                    name = "promotion_fk", referencedColumnName = "id"
             ))
     private List<Promotion> promotions;
 
@@ -58,19 +61,15 @@ public class Client {
         this.id = id;
         this.name = name;
     }
-
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
