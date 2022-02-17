@@ -1,17 +1,25 @@
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
-        "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
-<beans>
-
-    <bean id="idCtrl" class="ma.cigma.pfe.presentation.ClientController">
-
-        <property name="service" ref="idService"/>
-
-    </bean>
-
-    <bean id="idService" class="ma.cigma.pfe.service.ClientServiceImpl">
-        <property name="dao" ref="idDao"/>
-    </bean>
-
-    <bean id="idDao" class="ma.cigma.pfe.dao.ClientDaoImpl"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+<tx:annotation-driven />
+<context:component-scan base-package="dao" />
+<context:component-scan base-package="service" />
+<context:component-scan base-package="presentation" />
+<bean id="entityManagerFactory"
+      class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+<property name="persistenceUnitName" value="unit_clients" />
+</bean>
+<bean id="transactionManager"
+      class="org.springframework.orm.jpa.JpaTransactionManager">
+<property name="entityManagerFactory"
+          ref="entityManagerFactory" />
+</bean>
 </beans>

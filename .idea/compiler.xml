@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tp8" />
         <module name="tp8_client" />
+        <module name="tp9" />
+        <module name="tp8" />
         <module name="MonPFE" />
       </profile>
     </annotationProcessing>
