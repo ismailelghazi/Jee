@@ -22,7 +22,7 @@ public class ClientServiceImp implements ClientService {
 
     @Override
     @Transactional
-    public Client modify(Client newClt) {
+    public Client modify(@NotNull Client newClt) {
         Client oldClt = clientRepository.findById(newClt.getId()).get();
         oldClt.setName(newClt.getName());
         return clientRepository.save(oldClt);

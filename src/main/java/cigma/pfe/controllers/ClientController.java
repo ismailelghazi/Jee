@@ -27,7 +27,7 @@ public class ClientController {
 
        }
        catch (Exception e){
-           System.out.println("rak ms7tih ach baghi t7yd :"+idClt);
+           System.out.println("ehooo:"+idClt);
        }
            }
     @GetMapping("/{id}")
@@ -38,7 +38,8 @@ public class ClientController {
     public List<Client> getAll() {
         return service.getAll();
     }
-    public List<Client> Find(String name){
+    @GetMapping("/find/{name}")
+    public List<Client> Find(@PathVariable("name") String name){
         return service.Find(name);
     }
 
