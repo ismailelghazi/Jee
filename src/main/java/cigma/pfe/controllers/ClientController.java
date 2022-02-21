@@ -15,13 +15,21 @@ public class ClientController {
     public Client save(@RequestBody Client clt) {
         return service.save(clt);
     }
+
     @PutMapping("/modify")
-    public Client modify(Client clt) {
+    public Client modify(@RequestBody Client clt) {
         return service.modify(clt);
     }
-    public void remove(long idClt) {
-        service.remove(idClt);
-    }
+    @DeleteMapping("/remove/{id}")
+    public void remove(@PathVariable("id") long idClt) {
+       try {
+           service.remove(idClt);
+
+       }
+       catch (Exception e){
+           System.out.println("rak ms7tih ach baghi t7yd :"+idClt);
+       }
+           }
     @GetMapping("/{id}")
     public Client getOne(@PathVariable("id") long idClt) {
         return service.getOne(idClt);
