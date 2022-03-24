@@ -48,11 +48,11 @@ public class ClientController {
         System.out.println(client);
         return "edit";
     }
-//    @PostMapping("/save")
-//    public String save(@ModelAttribute("employee") Client client) {
-//        //save employee to database
-//        client.save(client);
-//        return "redirect:/";
-//    }
+
+    @PostMapping(value = {"/save-client"})
+    public String save(Model model, @ModelAttribute("client") Client client) {
+        restTemplate.put(apiUrl+"/client/"+client.getId(), client, Client.class);
+        return "redirect:/client";
+    }
 
 }
