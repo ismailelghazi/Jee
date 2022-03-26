@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import java.util.List;
 @Controller
 public class ClientController {
@@ -32,13 +33,13 @@ public class ClientController {
         return "redirect:/client";
     }
     @PostMapping(value = "/add-client")
-    public String addClient(Model model,
-                            @ModelAttribute("client") Client
-                                    client) {
-        restTemplate.postForObject(
-                apiUrl+"/client/create/",
-                client,
-                Client.class);
+        public String addClient(Model model, @ModelAttribute("client") Client client,RedirectAttributes redirAttrs) {
+        if(client.getName()=="" ) {
+            redirAttrs.addFlashAttribute("error", "noo");
+        }else {
+            restTemplate.postForObject(apiUrl + "/client/create", client, Client.class);
+            redirAttrs.addFlashAttribute("success", "good job <3");
+        }
         return "redirect:/client";
     }
     @GetMapping("/show-client/{id}")
@@ -52,6 +53,11 @@ public class ClientController {
     @PostMapping(value = {"/save-client"})
     public String save(Model model, @ModelAttribute("client") Client client) {
         restTemplate.put(apiUrl+"/client/"+client.getId(), client, Client.class);
+        return "redirect:/client";
+    }
+    @RequestMapping("/accessdenied")
+    public String accessdenied(RedirectAttributes redirAttrs) {
+        redirAttrs.addFlashAttribute("msgDenied", "chkon nta !!!!!");
         return "redirect:/client";
     }
 

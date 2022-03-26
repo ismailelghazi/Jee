@@ -43,7 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/client");
+                .defaultSuccessUrl("/client")
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessdenied");
     }
 
 }
